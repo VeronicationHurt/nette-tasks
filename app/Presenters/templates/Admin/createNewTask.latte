@@ -1,0 +1,84 @@
+{block content}
+
+{form taskForm}
+
+<div class=" mb-6">
+                
+                  <h4 class="mb-1"><a n:href="dashboard">Back to Dashboard</a></h4>
+               
+                </div>
+                    <div class="mb-6">
+                    <h4 class="mb-1">Create New Task</h4>
+
+                  </div>
+                    <!-- row -->
+                    <div class="mb-3 row">
+                      {label title, class=> " col-sm-4 col-form-label form-label"}
+                      <div class="col-md-8 col-12">
+                        {input title, class=>"form-control", placeholder=> "Name of the task"}
+                      </div>
+                    </div>
+
+                    <!-- row -->
+                    <div class="mb-3 row">
+                      {label content, class=> " col-sm-4 col-form-label form-label"}
+                      <div class="col-md-8 col-12">
+                        {input content, class=>"form-control", placeholder=> "Content of the task", rows=>5}
+                      </div>
+                    </div>
+
+
+
+
+
+                    <!-- row -->
+                    <div class="mb-3 row">
+                      {label deadline, class=> " col-sm-4 col-form-label form-label"}
+                      <div class="col-md-8 col-12">
+                        {input deadline, class=>"form-control"}
+                      </div>
+                    </div>
+
+
+
+
+                    <!-- row -->
+                    <div class="mb-3 row">
+                      
+                        {label idtaskCategory, class=> " col-sm-4 col-form-label form-label"}
+                      <div class="col-md-8 col-12">
+
+                
+                        {input idtaskCategory, class=>"form-select", value=>id}
+
+                      </div>
+                    </div>
+
+
+
+
+                    <!-- row -->
+                    <div class="mb-3 row">
+                      
+                        {label idusers, class=> " col-sm-4 col-form-label form-label"}
+                      <div class="col-md-8 col-12">
+
+                
+                        {input idusers, class=>"form-select", value=>id}
+
+                      </div>
+                    </div>
+
+                    <!-- row -->
+                    <div class="row align-items-center">
+                      
+
+                      
+                      <div class="offset-md-4 col-md-8 mt-4">
+                         {input TaskForm, class=>"btn btn-primary"}
+                      </div>
+                      
+                    </div>
+                 {/form}
+
+                  {/block}

@@ -1,0 +1,60 @@
+{block content}
+
+
+<div class="card smooth-shadow-md">
+          <!-- Card body -->
+          <div class="card-body p-6">
+            <div class="mb-4">
+              <img src="{$basePath}/images/brand/logo/logo-primary.svg" class="mb-2" alt="">
+              <p class="mb-6">Please enter your user information.</p>
+            </div>
+            <!-- Form -->
+            {form signInForm}
+              <!-- Username -->
+              <div class="mb-3">
+               
+                {label username, class=> "form-label"}
+                {input username, class=>"form-control", placeholder=> "Username"}
+
+              </div>
+              <!-- Password -->
+              <div class="mb-3">
+               
+                {label password, class=> "form-label"}
+                {input password, class=>"form-control", placeholder=> "**************"}
+
+              </div>
+              <!-- Checkbox -->
+              {* <div class="d-lg-flex justify-content-between align-items-center
+                  mb-4">
+                <div class="form-check custom-checkbox">
+                  <input type="checkbox" class="form-check-input" id="rememberme">
+                  <label class="form-check-label" for="rememberme">Remember
+                      me</label>
+                </div>
+
+              </div> *}
+              <div>
+                <!-- Button -->
+                <div class="d-grid">
+                               
+                {input send, class=>"btn btn-primary"}
+                </div>
+
+                {* <div class="d-md-flex justify-content-between mt-4">
+                  <div class="mb-2 mb-md-0">
+                    <a href="sign-up.html" class="fs-5">Create An
+                        Account </a>
+                  </div>
+                  <div>
+                    <a href="forget-password.html" class="text-inherit
+                        fs-5">Forgot your password?</a>
+                  </div>
+
+                </div> *}
+              </div>
+
+
+            {/form}
+          </div>
+        </div>

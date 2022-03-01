@@ -1,0 +1,162 @@
+{block content}
+
+<div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">All tasks</h4>
+                    </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-briefcase fs-4"></i>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                
+
+
+
+                    <h1 class="fw-bold" >{ifset $count}
+                                                {$count}
+                                              {/ifset}</h1>
+                
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+              <!-- card -->
+              <div class="card ">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- heading -->
+                  <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">My Tasks</h4>
+                    </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-list-task fs-4"></i>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                    <h1 class="fw-bold">{$myTasks}</h1>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+              <!-- card -->
+              <div class="card ">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- heading -->
+                  <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">Members</h4>
+                    </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-people fs-4"></i>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                    <h1 class="fw-bold">{$membersCount}</h1>
+                   
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+              <!-- card -->
+              <div class="card ">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- heading -->
+                  <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">New Tasks</h4>
+                    </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-bullseye fs-4"></i>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                    <h1 class="fw-bold">{$newTasksNumber}</h1>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- row  -->
+          <div class="row mt-6">
+            <div class="col-md-12 col-12">
+              <!-- card  -->
+              <div class="card">
+                <!-- card header  -->
+                <div class="card-header bg-white  py-4">
+                  <h4 class="mb-0">All tasks</h4>
+                </div>
+
+<div class="table-responsive">
+<table class="table text-nowrap mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Task name</th>
+                        <th>Deadline</th>
+                        <th>Category</th>
+                        <th>Assignee</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+{foreach $alltasks as $task}
+ <tr>
+
+
+
+		
+
+	
+        <td class="align-middle"><div class="d-flex
+            align-items-center">
+            
+            <div class="ms-3 lh-1">
+                <h5 class=" mb-1"> <a n:href="TaskDetail:show $task->id"
+                    class="text-inherit">{$task->title}</a></h5>
+
+            </div>
+            </div>
+        </td>
+        <td class="align-middle">{$task->deadline->format('Y-m-d')}</td>
+        <td class="align-middle"><span class="badge
+            bg-warning">{$task->nameOfTasksCategory}</span></td>
+        <td class="align-middle"><div class="align-middle text-dark">
+            <div>{$task->name}</div>
+			</td>
+
+        <td class="align-middle text-dark">
+            <div>{$task->status}</div>
+            
+            </div>
+        </td>
+
+
+</tr>
+{/foreach}
+
+
+                    </tbody>
+                  </table>
+                 </div> 

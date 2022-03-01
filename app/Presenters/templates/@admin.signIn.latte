@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+<!-- Favicon icon-->
+<link rel="shortcut icon" type="image/x-icon" href="{$basePath}/images/favicon/favicon.ico">
+
+<!-- Libs CSS -->
+
+
+<link href="{$basePath}/libs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="{$basePath}/libs/dropzone/dist/dropzone.css"  rel="stylesheet">
+<link href="{$basePath}/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+<link href="{$basePath}/libs/prismjs/themes/prism-okaidia.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="{$basePath}/css/theme.min.css">
+  <title>Sign In</title>
+</head>
+
+<body class="bg-light">
+  <!-- container -->
+  <div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center g-0
+        min-vh-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
+
+        <div class="alert alert-{$flash->type}" role="alert" n:if="$flashes" n:foreach="$flashes as $flash">
+          {$flash->message}
+        </div>
+
+        <!-- Card -->
+        {include content}
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <!-- Libs JS -->
+<script src="{$basePath}/libs/jquery/dist/jquery.min.js"></script>
+<script src="{$basePath}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{$basePath}/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="{$basePath}/libs/feather-icons/dist/feather.min.js"></script>
+<script src="{$basePath}/libs/prismjs/prism.js"></script>
+<script src="{$basePath}/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="{$basePath}/libs/dropzone/dist/min/dropzone.min.js"></script>
+<script src="{$basePath}/libs/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="{$basePath}/libs/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+
+
+
+<!-- Theme JS -->
+<script src="{$basePath}/js/theme.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+{block content}
+{* {foreach $users as $uzivatel}
+	
+		<h2>{$uzivatel->name}</h2>
+		<h3>{$uzivatel->password}</h3>
+		<h4>{$uzivatel->role}</h4>
+		
+
+	{/foreach}
+
+{foreach $posts as $post}
+	
+		<h2>{$post->title}</h2>
+		
+
+	{/foreach}
+		<select>
+                        {foreach $taskcategory as $categories}
+                                <option value="$categories->id">{$categories->nameOfTasksCategory}</option>
+                        {/foreach}
+		</select> *}
+
+
+<table class="table text-nowrap mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Task name</th>
+                        <th>Deadline</th>
+                        <th>Category</th>
+                        <th>Assignee</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+{foreach $alltasks as $task}
+ <tr>
+
+
+
+		
+
+	
+        <td class="align-middle"><div class="d-flex
+            align-items-center">
+            
+            <div class="ms-3 lh-1">
+                <h5 class=" mb-1"> <a href="#"
+                    class="text-inherit">{$task->title}</a></h5>
+
+            </div>
+            </div>
+        </td>
+        <td class="align-middle">{$task->deadline->format('Y-m-d')}</td>
+        <td class="align-middle"><span class="badge
+            bg-warning">{$task->nameOfTasksCategory}</span></td>
+        <td class="align-middle"><div class="align-middle text-dark">
+            <div>{$task->name}</div>
+			</td>
+
+        <td class="align-middle text-dark">
+            <div>{$task->status}</div>
+            
+            </div>
+        </td>
+
+
+</tr>
+{/foreach}
+
+
+                    </tbody>
+                  </table>
+
+
+
+
+
+{/block}

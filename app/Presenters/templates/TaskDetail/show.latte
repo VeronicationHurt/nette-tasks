@@ -1,0 +1,57 @@
+{block content}
+
+<div class=" mb-6">
+                
+                  <h4 class="mb-1"><a n:href="admin:dashboard">Back to Dashboard</a></h4>
+               
+                </div>
+
+
+
+
+                    <div class="mb-6 row">
+                      
+                      
+                       Title: {$currenttask->title}
+                      
+                    </div>
+
+                    <!-- row -->
+                    <div class="mb-6 row">
+                      Content: {$currenttask->content}
+                      
+                    </div>
+
+                    <div class="mb-6 row">
+                     Created at: {$currenttask->created_at->format('Y-m-d')}
+                      
+                    </div>
+
+                     <div class="mb-6 row">
+                      Deadline: {$currenttask->deadline->format('Y-m-d')}
+                      
+                    </div>
+
+                    <div class="mb-6 row">
+                      Category: {$currentcattegory->nameoftaskscategory}
+                      
+                    </div>
+
+                     <div class="mb-6 row">
+                      Status: {$currentstatus->status}
+                      
+                    </div>
+
+                    <div class="mb-6 row">
+                      Assignee: {$currentassignee->name}
+                      
+                    </div>
+
+                    <div class="mb-6 row">
+                     Client: {$currentclient->name}
+                      
+                    </div>
+
+
+                      
+                   
