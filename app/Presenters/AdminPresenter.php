@@ -38,7 +38,7 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
        
         $this->template->count = $this->database->table('tasks')->count("*"); 
         $this->template->myTasks = $this->database->table('tasks')->where('idusers', $currentId)->count("*");
-        $this->template->membersCount = $this->database->table('users')->count("*");
+        $this->template->membersCount = $this->database->table('login')->count("*");
         $this->template->newTasksNumber =  $this->database->table('tasks')->where('idtaskstatus', 1)->count("*");
         
        
@@ -48,9 +48,9 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
             ->table('users'); 
 
             $this->template->alltasks = $this->database->query('
-		SELECT `tasks`.*,`users`.`name`,`taskstatus`.`status`, `taskcategory`.`nameOfTasksCategory` FROM `tasks`
+		SELECT `tasks`.*,`login`.`name`,`taskstatus`.`status`, `taskcategory`.`nameOfTasksCategory` FROM `tasks`
 		LEFT JOIN `taskstatus` ON `idtaskstatus` = `taskstatus`.`id_status`
-		LEFT JOIN `users` ON `idusers` = `users`.`id_user`
+		LEFT JOIN `login` ON `idusers` = `login`.`id_users`
 		LEFT JOIN `taskcategory` ON `idtaskcategory` = `taskcategory`.`id_taskcategory`
 
 		
@@ -128,8 +128,8 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
             $taskcategory = $this->database->table("taskcategory")
                         ->select('id_taskcategory, nameOfTasksCategory')->fetchPairs('id_taskcategory', 'nameOfTasksCategory');
     
-            $assignee = $this->database->table("users")
-                        ->select('id_user, name')->fetchPairs('id_user', 'name');
+            $assignee = $this->database->table("login")
+                        ->select('id_users, name')->fetchPairs('id_users', 'name');
     
             $form2->addText('title', 'Name of the task')->setRequired('Cannot be empty');
             $form2->addTextArea('content', 'Content of the task')->setRequired('Cannot be empty');

@@ -31,7 +31,7 @@ class Authenticator implements \Nette\Security\Authenticator {
             throw new \Nette\Security\AuthenticationException("Špatné heslo.");
     
 
-    return new \Nette\Security\SimpleIdentity($user->id, ['name' => $user->name]);
+    return new \Nette\Security\SimpleIdentity($user->id_users, ['name' => $user->name]);
 
 
 }

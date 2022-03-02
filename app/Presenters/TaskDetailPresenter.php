@@ -43,9 +43,9 @@ final class TaskDetailPresenter extends Nette\Application\UI\Presenter
 
         $this->template->currentcattegory = $this->database->table('taskcategory')->select('nameoftaskscategory')->where('id_taskcategory', $currentcategoryid)->fetch();
         
-        $this->template->currentassignee = $this->database->table('users')->select('name')->where('id_user', $currentassignee)->fetch();
+        $this->template->currentassignee = $this->database->table('users')->select('name')->where('id_users', $currentassignee)->fetch();
 
-        $this->template->currentclient = $this->database->table('users')->select('name')->where('id_user', $currentclient)->fetch();
+        $this->template->currentclient = $this->database->table('users')->select('name')->where('id_users', $currentclient)->fetch();
 
 
 //         $this->template->catt = $this->database->query('
