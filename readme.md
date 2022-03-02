@@ -7,10 +7,8 @@ Nette Web Project - TO-DO Application
 
 
 To-do: 
- - Migrace tabulek
- - Login tabulka vs users tabulka
  - Úprava vzhledu detailu tasku
  - Úprava stavu a přidání komentů k úkolům
- - Propojení s mailem - poslání na mail info o novém úkolu
  - tvorba nového uživatele
- - práce s rolemi uživatelu
+ - Propojení s mailem - poslání na mail info o novém úkolu
+ - práce s rolemi uživatelů

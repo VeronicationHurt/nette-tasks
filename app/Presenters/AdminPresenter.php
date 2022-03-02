@@ -76,7 +76,8 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
 
     public function actionCreateNewTask(){
 
-        $this->setLayout('admin.createNewTask');
+        $this->setLayout('createnewtask.createNewTask');
+        
 
     }
 
@@ -118,68 +119,4 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
 	
     
 
-   
-
-
-        protected function createComponentTaskForm(): Form {
-            $form2 = new Nette\Application\UI\Form();
-    
-            
-            $taskcategory = $this->database->table("taskcategory")
-                        ->select('id_taskcategory, nameOfTasksCategory')->fetchPairs('id_taskcategory', 'nameOfTasksCategory');
-    
-            $assignee = $this->database->table("login")
-                        ->select('id_users, name')->fetchPairs('id_users', 'name');
-    
-            $form2->addText('title', 'Name of the task')->setRequired('Cannot be empty');
-            $form2->addTextArea('content', 'Content of the task')->setRequired('Cannot be empty');
-            $form2->addText('deadline','Deadline')->setHtmlType('date')->setDefaultValue((new \DateTime)->format('Y-m-d'))->setRequired('Cannot be empty');;
-            $form2->addSelect('idtaskCategory', 'Category', $taskcategory)->setHtmlId('1');
-            $form2->addSelect("idusers", "Assignee", $assignee)->setHtmlId('Assignee');
-            $form2->addSubmit('TaskForm','Create New Task');
-            $form2->onSuccess[]= [$this, 'TaskFormSuccess'];
-            
-            return $form2;
-    
-    
-     }
-
-
-     public function TaskFormSuccess (Nette\Application\UI\Form $form2, array $data){
-        $values = [$form2->getValues()];
-       
-      
-       
-        // $this->getUser()->login($values->username, $values->password);
-       $clientId = $this->getUser()->getIdentity()->id;
-
-       
-
-        
-// https://doc.nette.org/cs/database/explorer *****************
-
-        $row = $this->database->table('tasks')->insert([
-     
-            'content' => ($data['content']),
-            'created_at' => new \DateTime(),  // nebo $explorer::literal('NOW()')
-            'title' => ($data['title']), // vloží soubor
-            'clientId' => $this->getUser()->getIdentity()->id,
-            'deadline' => ($data['deadline']),
-            'idtaskcategory' => ($data['idtaskCategory']),
-            'idusers' => ($data['idusers']),
-            'idtaskstatus' => 1,
-        ]);
-      
-
-
-        // $post = $this->database
-		// ->table('tasks')
-		// ->insert($data);
-
-        $this->flashMessage("Task created succesfully","success");       
-       $this->redirect("dashboard");
-
-    }
-
-
-    }
+}
