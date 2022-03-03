@@ -17,7 +17,7 @@ final class TaskDetailPresenter extends Nette\Application\UI\Presenter
 	}
 
 	public function renderShow(int $taskId): void
-	{    $this->setLayout('admin.createNewTask');
+	{    $this->setLayout('createnewtask.createNewTask');
 
 		$this->template->currenttask = $this->database
 			->table('tasks')
@@ -47,38 +47,8 @@ final class TaskDetailPresenter extends Nette\Application\UI\Presenter
 
         $this->template->currentclient = $this->database->table('users')->select('name')->where('id_user', $currentclient)->fetch();
 
-
-//         $this->template->catt = $this->database->query('
-//         SELECT `tasks`.*,`users`.`name`,`taskstatus`.`status`, `taskcategory`.`nameOfTasksCategory` FROM `tasks` 
-//         LEFT JOIN `taskstatus` ON `idtaskstatus` = `taskstatus`.`id_status`
-//         LEFT JOIN `users` ON `idusers` = `users`.`id_user`
-//         LEFT JOIN `taskcategory` ON `idtaskcategory` = `taskcategory`.`id_taskcategory`
-// WHERE `id`= "{$currentId}"
-// ');
-        // --------------NOT WORKING AND I DONT KNOW WHY---------
-        //     if (!$taskId) {
-		// $this->error('Task not found.');
-
-        // }
 		
 	}
 
-    public function renderTaskDetail(): void
-    {
-        $this->template->soom = "dsfdsf";
-
-//         // JOIN PŘEPSAT POMOCÍ WHERE a variable
-//         $this->template->currenttask = $this->database->query('
-//         SELECT `tasks`.*,`users`.`name`,`taskstatus`.`status`, `taskcategory`.`nameOfTasksCategory` FROM `tasks` 
-//         LEFT JOIN `taskstatus` ON `idtaskstatus` = `taskstatus`.`id_status`
-//         LEFT JOIN `users` ON `idusers` = `users`.`id_user`
-//         LEFT JOIN `taskcategory` ON `idtaskcategory` = `taskcategory`.`id_taskcategory`
-// WHERE `id`= "{$currentId}"
-
-        
-//      ');
-        
-
-
-    }
+   
 }

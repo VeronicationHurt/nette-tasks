@@ -7,8 +7,8 @@ Nette Web Project - TO-DO Application
 
 
 To-do: 
- - Úprava vzhledu detailu tasku
+ 
  - Úprava stavu a přidání komentů k úkolům
  - tvorba nového uživatele
- - Propojení s mailem - poslání na mail info o novém úkolu
+ - Propojení s mailem - poslání na mail info o novém úkolu/změna stavu
  - práce s rolemi uživatelů

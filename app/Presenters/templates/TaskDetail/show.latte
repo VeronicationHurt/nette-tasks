@@ -1,57 +1,86 @@
 {block content}
 
-<div class=" mb-6">
-                
+ <div class=" mb-6">               
                   <h4 class="mb-1"><a n:href="admin:dashboard">Back to Dashboard</a></h4>
                
                 </div>
 
 
-
-
-                    <div class="mb-6 row">
-                      
-                      
-                       Title: {$currenttask->title}
-                      
+                  <!-- row -->
+                  <div class="mb-6 row">
+                      <span class="col-sm-2"> Title: </span>
+                      <div class="col-md-4 col-4">
+                        {$currenttask->title}
+                      </div>
                     </div>
+
+                
+
+                  <!-- row -->
+                  <div class="mb-6 row">
+                      <span class="col-sm-2">  Content: </span>
+                      <div class="col-md-4 col-4">
+                        {$currenttask->content}
+                      </div>
+                    </div>
+
+
+                  <!-- row -->
+                  <div class="mb-6 row">
+                      <span class="col-sm-2"> Created at: </span>
+                      <div class="col-md-4 col-4">
+                        {$currenttask->created_at->format('Y-m-d')}
+                      </div>
+                    </div>
+
+
+
+                  <!-- row -->
+                  <div class="mb-6 row">
+                      <span class="col-sm-2">  Deadline: </span>
+                      <div class="col-md-4 col-4">
+                       {$currenttask->deadline->format('Y-m-d')}
+                      </div>
+                    </div>
+
+
 
                     <!-- row -->
-                    <div class="mb-6 row">
-                      Content: {$currenttask->content}
-                      
-                    </div>
-
-                    <div class="mb-6 row">
-                     Created at: {$currenttask->created_at->format('Y-m-d')}
-                      
-                    </div>
-
-                     <div class="mb-6 row">
-                      Deadline: {$currenttask->deadline->format('Y-m-d')}
-                      
-                    </div>
-
-                    <div class="mb-6 row">
-                      Category: {$currentcattegory->nameoftaskscategory}
-                      
-                    </div>
-
-                     <div class="mb-6 row">
-                      Status: {$currentstatus->status}
-                      
-                    </div>
-
-                    <div class="mb-6 row">
-                      Assignee: {$currentassignee->name}
-                      
-                    </div>
-
-                    <div class="mb-6 row">
-                     Client: {$currentclient->name}
-                      
+                  <div class="mb-6 row">
+                      <span class="col-sm-2"> Category: </span>
+                      <div class="col-md-4 col-4">
+                       {$currentcattegory->nameoftaskscategory}
+                      </div>
                     </div>
 
 
-                      
+                     <!-- row -->
+                  <div class="mb-6 row">
+                      <span class="col-sm-2"> Status: </span>
+                      <div class="col-md-4 col-4">
+                      {$currentstatus->status}
+                      </div>
+                    </div>
+
+                  
+
+                         <!-- row -->
+                  <div class="mb-6 row">
+                      <span class="col-sm-2"> Assignee: </span>
+                      <div class="col-md-4 col-4">
+                      {$currentassignee->name}
+                      </div>
+                    </div>
+
+                   
+                       <!-- row -->
+                  <div class="mb-6 row">
+                      <span class="col-sm-2"> Client: </span>
+                      <div class="col-md-4 col-4">
+                      {$currentclient->name}
+                      </div>
+                    </div>
+
+</div>
+         
                    
