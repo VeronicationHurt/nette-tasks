@@ -7,6 +7,8 @@ namespace App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 use Nette\Security\AuthenticationException;
+use Nette\Security\Passwords;
+
 
 final class AdminPresenter extends Nette\Application\UI\Presenter
 {
@@ -19,6 +21,9 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
 		$this->database = $database;
         
 	}
+
+
+   	
 
     public function startup(){
         parent::startup();
@@ -80,6 +85,78 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
         
 
     }
+
+    public function actionNewMember(){
+
+        $this->setLayout('admin.signIn');
+        
+    }
+
+
+
+    protected function createComponentNewMemberForm(): Form {
+        $form = new Nette\Application\UI\Form();
+
+        
+
+
+        $form->addText('name', 'Username')->setRequired('Name is requried.');
+        $form->addEmail('email', 'E-mail')->setRequired('E-mail is requried.')
+		->addRule(function ($control) {
+            return !$this->database->query('SELECT `email` FROM `login` WHERE `email` = ? LIMIT 1', $control->value)->fetch();
+            }, ('Omlouváme se, ale toto datum již je zabrané.'));
+        $form->addPassword('password','Password')->setRequired('Password is requried.');
+        $form->addSubmit('addNew','Add New Member');
+        $form->onSuccess[]= [$this, 'newMemberFormSuccess'];
+        
+        
+        return $form;
+
+
+ }
+
+
+ public function newMemberFormSuccess (Nette\Application\UI\Form $form){
+    $values = $form->getValues();
+
+    try {
+
+
+       $values["password"] = @password_hash($values->password, PASSWORD_DEFAULT);
+       $values["role"] = 'Admin';
+    $values = $this->database
+        ->table('login')
+        ->insert($values);
+        
+        $this->flashMessage("New member was added succesfully.", 'success');
+        } catch(AuthenticationException $e) {
+
+            $this->flashMessage($e->getMessage(), "danger");
+            $this->redirect("dashboard");
+
+        }
+        $this->redirect("dashboard");
+
+
+
+     
+   
+   
+
+
+    // try {
+    // $this->getUser()->login($values->username, $values->password);
+    // } catch(AuthenticationException $e) {
+
+    //     $this->flashMessage($e->getMessage(), "danger");
+    //     $this->redirect("signIn");
+
+    // }
+    // $this->redirect("dashboard");
+
+}
+
+
 
     public function actionSignOut(){
         $this->getUser()->logout();
