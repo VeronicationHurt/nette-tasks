@@ -5,7 +5,7 @@
               <div class="card-body">
                 <div class="mb-6">
                   <h4 class="mb-1"><a class="btn btn-primary" n:href="admin:dashboard">Back to Dashboard</a>
-                  <button style="" type="submit" class="btn btn-dark">Add comment</button>
+                  
                   <a n:href="TaskDetail:editTask $currenttask->id" class="btn btn-dark">Change Task</a>
                   </h4>
                 </div>
@@ -46,10 +46,54 @@
                   </div>
                 </div>
               </div>
+ <div class="card mt-5">
+                <!-- card body -->
+                <div class="mb-6">
+                    <div class="alert alert-{$flash->type}" role="alert" n:if="$flashes" n:foreach="$flashes as $flash">
+          {$flash->message}
+        </div>
+                <div class="card-body">
+          {form commentForm}
+                 <!-- row -->
+                     <div class="mb-4 row">
+                      <h6 class="text-uppercase fs-5 ls-2">Content of comment: </h6>
+                      <div class="col-md-12 col-12">
+                        {input content, class=>"form-control", row=>5}
                       
 
-                    
+                        <div class="mt-2">
+                         {input sendCom, class=>"btn btn-primary"}
+                         </div>
+                      </div>
+                    </div>
+
+                    <!-- row -->
                    
+
+                  {/form}
+             
+
+                    </div>
+                  <div class="card-body">
+                      <!-- card title -->
+                      <h4 class="card-title">Comments</h4>
+                        {foreach $comments as $comment}
+                      <div class="d-flex mb-5">
+                        
+                        <!-- content -->
+                        <div class="ms-1 ">
+                          <h5 class="mb-1">{$author->name} said:</h5>
+                          <p class="text-muted mb-2">{$comment->content}
+                          </p>
+                        </div>
+                      </div>
+                        {/foreach}
+                    </div>
+
+
+
+                   
+                   </div>
                 
                 
 

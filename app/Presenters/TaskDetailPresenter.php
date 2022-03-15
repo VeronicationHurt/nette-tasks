@@ -37,7 +37,7 @@ final class TaskDetailPresenter extends Nette\Application\UI\Presenter
           $currentassignee = $this->database->table('tasks')->select('idusers')->where('id',$taskId);
 
           $currentclient = $this->database->table('tasks')->select('clientid')->where('id',$taskId);
-
+          $currentAuthor = $this->database->table('comments')->select('name_id')->where('task_id',$taskId);
 
         $this->template->currentstatus = $this->database->table('taskstatus')->select('status')->where('id_status', $currentstatusid)->fetch();
 
@@ -48,7 +48,12 @@ final class TaskDetailPresenter extends Nette\Application\UI\Presenter
 
         $this->template->currentclient = $this->database->table('login')->select('name')->where('id_users', $currentclient)->fetch();
 
-		
+        $this->template->comments = $current->related('comments')->order('created_at');
+
+
+
+        $this->template->author = $this->database->table('login')->select('name')->where('id_users', $currentAuthor)->fetch();
+      //$this->database->table('taskstatus')->select('id_status, status')->fetchPairs('id_status', 'status');
 	}
   public function actionEditTask($taskId){
 
@@ -90,6 +95,7 @@ $this->template->contentAsignee = $this->database->table('login')->select('name'
 
 
  $this->template->currentassignee2 = $this->database->table('tasks')->select('idusers')->where('id',$taskId);
+
 
 
  
@@ -141,27 +147,36 @@ public function EditFormSuccess (Nette\Application\UI\Form $form2, array $data){
 		$post->update($data);
 
  
-
-  
-// https://doc.nette.org/cs/database/explorer *****************
-
-  // $row = $this->database->table('tasks')->update([
-
-  //     'content' => ($data['content']),
-      
-  //     'title' => ($data['title']), 
-      
-  //     'deadline' => ($data['deadline']),
-   
-  //     'idusers' => ($data['idusers']),
-  //     'idtaskstatus' => ($data['idtaskstatus'])
-  //     ]);
   $this->flashMessage("Task edited succesfully","success");   
 
 
 }
 
+protected function createComponentCommentForm(): Form
+{
+	$formCom = new Form; // means Nette\Application\UI\Form
 
+	
+	$formCom->addTextArea('content', 'Comment:')
+		->setRequired();
+
+	$formCom->addSubmit('sendCom', 'Add comment');
+  $formCom->onSuccess[] = [$this, 'commentFormSucceeded'];
+	return $formCom;
+}
+
+public function commentFormSucceeded(\stdClass $data): void
+{
+
+	$this->database->table('comments')->insert([
+		'task_id' => $this->getParameter('taskId'),
+		'name_id' => $this->getUser()->getIdentity()->id,
+		'content' => $data->content,
+	]);
+
+	$this->flashMessage('Comment added successfully.', 'success');
+	$this->redirect('this');
+}
 
 
 }
