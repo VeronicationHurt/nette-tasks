@@ -1,86 +1,66 @@
 {block content}
 
- <div class=" mb-6">               
-                  <h4 class="mb-1"><a n:href="admin:dashboard">Back to Dashboard</a></h4>
-               
+ 
+
+              <div class="card-body">
+                <div class="mb-6">
+                  <h4 class="mb-1"><a class="btn btn-primary" n:href="admin:dashboard">Back to Dashboard</a>
+                  <button style="" type="submit" class="btn btn-dark">Add comment</button>
+                  <a n:href="TaskDetail:editTask $currenttask->id" class="btn btn-dark">Change Task</a>
+                  </h4>
                 </div>
 
+                </div>
+             
 
+                         <div class="card">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- card title -->
+                  <h4 class="card-title">{$currenttask->title} by {$currentclient->name}</h4>
+                  <span class="text-uppercase fw-medium text-dark
+                      fs-5 ls-2">Content: </span>
+                  <!-- text -->
+                  <p class="mt-2 mb-6">{$currenttask->content}
+                  </p>
                   <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2"> Title: </span>
-                      <div class="col-md-4 col-4">
-                        {$currenttask->title}
-                      </div>
+                  <div class="row">
+                    
+                    <div class="col-6 mb-5">
+                      <h6 class="text-uppercase fs-5 ls-2">Assignee: </h6>
+                      <p class="mb-0">{$currentassignee->name}</p>
                     </div>
+                    <div class="col-6 mb-5">
+                      <h6 class="text-uppercase fs-5 ls-2">Task status: </h6>
+                      <p class="mb-0">{$currentstatus->status}</p>
+                    </div>
+                    <div class="col-6">
+                      <h6 class="text-uppercase fs-5 ls-2">Created: </h6>
+                      <p class="mb-0">{$currenttask->created_at->format('Y-m-d')}</p>
+                    </div>
+                    <div class="col-6">
+                      <h6 class="text-uppercase fs-5 ls-2">Deadline: 
+                      </h6>
+                      <p class="mb-0">{$currenttask->deadline->format('Y-m-d')}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                      
 
+                    
+                   
+                
                 
 
-                  <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2">  Content: </span>
-                      <div class="col-md-4 col-4">
-                        {$currenttask->content}
-                      </div>
-                    </div>
+
+             
+              
+               
+                
 
 
-                  <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2"> Created at: </span>
-                      <div class="col-md-4 col-4">
-                        {$currenttask->created_at->format('Y-m-d')}
-                      </div>
-                    </div>
+            
 
-
-
-                  <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2">  Deadline: </span>
-                      <div class="col-md-4 col-4">
-                       {$currenttask->deadline->format('Y-m-d')}
-                      </div>
-                    </div>
-
-
-
-                    <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2"> Category: </span>
-                      <div class="col-md-4 col-4">
-                       {$currentcattegory->nameoftaskscategory}
-                      </div>
-                    </div>
-
-
-                     <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2"> Status: </span>
-                      <div class="col-md-4 col-4">
-                      {$currentstatus->status}
-                      </div>
-                    </div>
-
-                  
-
-                         <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2"> Assignee: </span>
-                      <div class="col-md-4 col-4">
-                      {$currentassignee->name}
-                      </div>
-                    </div>
-
-                   
-                       <!-- row -->
-                  <div class="mb-6 row">
-                      <span class="col-sm-2"> Client: </span>
-                      <div class="col-md-4 col-4">
-                      {$currentclient->name}
-                      </div>
-                    </div>
-
-</div>
          
                    

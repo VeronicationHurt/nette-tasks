@@ -52,21 +52,14 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
         $this->template->users = $this->database
             ->table('users'); 
 
-            $this->template->alltasks = $this->database->query('
+        $this->template->alltasks = $this->database->query('
 		SELECT `tasks`.*,`login`.`name`,`taskstatus`.`status`, `taskcategory`.`nameOfTasksCategory` FROM `tasks`
 		LEFT JOIN `taskstatus` ON `idtaskstatus` = `taskstatus`.`id_status`
 		LEFT JOIN `login` ON `idusers` = `login`.`id_users`
 		LEFT JOIN `taskcategory` ON `idtaskcategory` = `taskcategory`.`id_taskcategory`
-
-		
-			');
-    
-
-   
-    
+        ');
+        
         }
-
-    
 
     public function actionSignIn(){
 
@@ -104,7 +97,7 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
         $form->addEmail('email', 'E-mail')->setRequired('E-mail is requried.')
 		->addRule(function ($control) {
             return !$this->database->query('SELECT `email` FROM `login` WHERE `email` = ? LIMIT 1', $control->value)->fetch();
-            }, ('Omlouváme se, ale toto datum již je zabrané.'));
+            }, ('E-mail already exist.'));
         $form->addPassword('password','Password')->setRequired('Password is requried.');
         $form->addSubmit('addNew','Add New Member');
         $form->onSuccess[]= [$this, 'newMemberFormSuccess'];
