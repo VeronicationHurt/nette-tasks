@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+<html lang="en">
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+<head>
+  <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+<!-- Favicon icon-->
+<link rel="shortcut icon" type="image/x-icon" href="{$basePath}/images/favicon/favicon.ico">
+
+<!-- Libs CSS -->
+
+
+<link href="{$basePath}/libs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="{$basePath}/libs/dropzone/dist/dropzone.css"  rel="stylesheet">
+<link href="{$basePath}/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+<link href="{$basePath}/libs/prismjs/themes/prism-okaidia.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="{$basePath}/css/theme.min.css">
+  <title>To Do Application</title>
 </head>
 
-<body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
+<body class="bg-light"> 
+  <div id="db-wrapper">
+<div class="container-fluid p-6">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-12">
 	{include content}
 
 	{block scripts}
 	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
 	{/block}
+			</div>
+		</div>	
+	</div>
+<!-- Libs JS -->
+<script src="{$basePath}/libs/jquery/dist/jquery.min.js"></script>
+<script src="{$basePath}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{$basePath}/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="{$basePath}/libs/feather-icons/dist/feather.min.js"></script>
+<script src="{$basePath}/libs/prismjs/prism.js"></script>
+<script src="{$basePath}/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="{$basePath}/libs/dropzone/dist/min/dropzone.min.js"></script>
+<script src="{$basePath}/libs/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="{$basePath}/libs/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+
+
+
+<!-- Theme JS -->
+<script src="{$basePath}/js/theme.min.js"></script>
 </body>
+
 </html>

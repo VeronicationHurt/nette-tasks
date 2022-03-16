@@ -154,7 +154,7 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
     public function actionSignOut(){
         $this->getUser()->logout();
         $this->flashMessage("Jste odhlášen.","success");
-        $this->redirect("signIn");
+        $this->redirect("homepage:default");
 
     }
 

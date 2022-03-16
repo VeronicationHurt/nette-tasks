@@ -13,3 +13,4 @@ To-do:
  - práce s rolemi uživatelů
  - filtrace úkolů
  - statistiky
+ - očesat bootstrap o useless stránky

@@ -1,11 +1,182 @@
 {block content}
-	<h1 n:block="title"><a href="{link Admin:signIn}">Login to TO-DO app >>>>></a></h1>
 
-	<h2 style="color:red;"><br>Testing page</h2> 
+<div class="mb-6">
+                    <div class="alert alert-{$flash->type}" role="alert" n:if="$flashes" n:foreach="$flashes as $flash">
+          {$flash->message}
+        </div>
+        <div class="row align-items-center mb-4">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+            <!-- Bg -->
+            <div class="pt-20 rounded-top" style="background:
+                url({$basePath}/images/background/profile-cover.jpg) no-repeat;
+                background-size: cover;">
+            </div>
+            <div class="bg-white rounded-bottom smooth-shadow-sm ">
+              <div class="d-flex align-items-center justify-content-between
+                  pt-4 pb-6 px-4">
+                <div class="d-flex align-items-center">
+
+                  <!-- text -->
+                  <div class="lh-1">
+                    <h2 class="mb-0">Nette To Do Application</h2>
+                    <p class="mb-0 d-block">by Veronication</p>
+                  </div>
+                </div>
+                <div>
+                  <a n:href="admin:signIn" class="btn btn-outline-primary
+                      d-none d-md-block">Login</a>
+                </div>
+              </div>
+              <!-- nav -->
+              <ul class="nav nav-lt-tab px-4" id="pills-tab" role="tablist">
+
+			  <li class="nav-item">
+                  <a class="nav-link" role="button" onclick="openContent(event, 'About')">About app</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" role="button" onclick="openContent(event, 'Databases')">Database</a>
+                </li>
+
+				<li class="nav-item">
+                  <a class="nav-link" role="button" onclick="openContent(event, 'Comments')">Comments</a>
+                </li>
+                <li class="nav-item">
+                  <a  class="nav-link" onclick="openContent(event, 'Users')">Users</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" role="button" onclick="openContent(event, 'Updates')">Updates</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link"  role="button" onclick="openContent(event, 'Email')">
+                      E-mail notifications
+                    </a>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+	                
+        </div>
+
+			              <!-- card -->
+              <div class="card" id="About" class="tabcontent" style="">
+                <!-- card body -->
+                <div class="card-body" >
+                  <!-- card title -->
+                  <h4 class="card-title">About Application</h4>
+                  {* <span class="text-uppercase fw-medium text-dark
+                      fs-5 ls-2">Bio</span> *}
+                  <!-- text -->
+                  <p class="mt-2 mb-6">Based on Nette Framework and Bootsrap template. You can set tasks to your team, change the task or discuss it in commentary section. Also there is a registration for new users, main statistics and detail of the task.
+                  </p>
+                  <!-- row -->
+
+                </div>
+
+              </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+              <!-- card -->
+              <div class="card" id="Databases" class="tabcontent" style="display:none;">
+                <!-- card body -->
+                <div class="card-body" >
+                  <!-- card title -->
+                  <h4 class="card-title">Database</h4>
+                  {* <span class="text-uppercase fw-medium text-dark
+                      fs-5 ls-2">Bio</span> *}
+                  <!-- text -->
+                  <p class="mt-2 mb-6">(Now only)Six related tables run on InnoDB connected with foreing keys(ids), which allows developer to really easily update and insert data.
+                  </p>
+                  <!-- row -->
+
+                </div>
+
+              </div>
+
+				<!-- card -->
+			  <div class="card" id="Users" class="tabcontent" style="display:none;">
+                <!-- card body -->
+                <div class="card-body" >
+                  <!-- card title -->
+                  <h4 class="card-title">Users</h4>
+                  {* <span class="text-uppercase fw-medium text-dark
+                      fs-5 ls-2">Bio</span> *}
+                  <!-- text -->
+                  <p class="mt-2 mb-6">App has currently 3 users - all of them are for testing purposes. New users can be registered inside the app and all you need is unique e-mail, which is not used yet. There are also roles, but didn't apply them yet. So its useless now, but prepared for great stuff.
+                  </p>
+                  <!-- row -->
+
+                </div>
+
+              </div>
+
+			  				<!-- card -->
+			  <div class="card" id="Comments" class="tabcontent" style="display:none;">
+                <!-- card body -->
+                <div class="card-body" >
+                  <!-- card title -->
+                  <h4 class="card-title">Comments</h4>
+                  {* <span class="text-uppercase fw-medium text-dark
+                      fs-5 ls-2">Bio</span> *}
+                  <!-- text -->
+                  <p class="mt-2 mb-6">Comment section is great for arguing and wasting time. Don't call them with complementary questions, just write comment and wait for few hours for response. Be toxic.
+                  </p>
+                  <!-- row -->
+
+                </div>
+
+              </div>
+
+			  				<!-- card -->
+			  <div class="card" id="Updates" class="tabcontent" style="display:none;">
+                <!-- card body -->
+                <div class="card-body" >
+                  <!-- card title -->
+                  <h4 class="card-title">Updates</h4>
+                  {* <span class="text-uppercase fw-medium text-dark
+                      fs-5 ls-2">Bio</span> *}
+                  <!-- text -->
+                  <p class="mt-2 mb-6">All of us hate confusing requirements, which managers constantly giving us. All tasks can be easily updated inside detail of the task. Don't feel like task should be assigned to you? Change it and don't waste your precious time.
+                  </p>
+                  <!-- row -->
+
+                </div>
+
+              </div>
+
+			  			  <div class="card" id="Email" class="tabcontent" style="display:none;">
+                <!-- card body -->
+                <div class="card-body" >
+                  <!-- card title -->
+                  <h4 class="card-title">E-mail notifications</h4>
+                  {* <span class="text-uppercase fw-medium text-dark
+                      fs-5 ls-2">Bio</span> *}
+                  <!-- text -->
+                  <p class="mt-2 mb-6">E-mail notifications are not implemented yet, never worked with SMTP before. Either with framework and here we are reading this. 
+                  </p>
+                  <!-- row -->
+
+                </div>
+
+              </div>
+            </div>
 
 
-
-	<p><a href="{link AllUsers:DisplayUsers}">Ukázat uživatele</a></p>
-	{* <h2><a href="{link Tasks:DisplayAllTasks}">Ukázat úkoly</a></h2> DODĚLAT A PROMYSLET DB*} 
-
+<script>
+function openContent(evt, contentName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("card");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("nav-link");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(contentName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
 {/block}
