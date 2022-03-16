@@ -22,7 +22,6 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
         
 	}
 
-
    	
 
     public function startup(){
@@ -38,28 +37,50 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
 
 
     }
+
+   
     public function renderDashboard(): void
-    {   $currentId =  $this->getUser()->getIdentity()->id;
+    {  
+         $currentId =  $this->getUser()->getIdentity()->id;
        
         $this->template->count = $this->database->table('tasks')->count("*"); 
         $this->template->myTasks = $this->database->table('tasks')->where('idusers', $currentId)->count("*");
         $this->template->membersCount = $this->database->table('login')->count("*");
         $this->template->newTasksNumber =  $this->database->table('tasks')->where('idtaskstatus', 1)->count("*");
-        
+      
        
 
 
         $this->template->users = $this->database
             ->table('users'); 
+        
+        
 
         $this->template->alltasks = $this->database->query('
 		SELECT `tasks`.*,`login`.`name`,`taskstatus`.`status`, `taskcategory`.`nameOfTasksCategory` FROM `tasks`
 		LEFT JOIN `taskstatus` ON `idtaskstatus` = `taskstatus`.`id_status`
 		LEFT JOIN `login` ON `idusers` = `login`.`id_users`
-		LEFT JOIN `taskcategory` ON `idtaskcategory` = `taskcategory`.`id_taskcategory`
+		LEFT JOIN `taskcategory` ON `idtaskcategory` = `taskcategory`.`id_taskcategory` ORDER BY `created_at`
         ');
+      
         
+
+        } 
+       
+        public function handleShowAll($new){
+            
+            $this->template->new = $this->database->table('tasks')->count("*");
+            
+            return $new;
         }
+
+        public function handleShowLess($less){
+            
+            $this->template->less = 5;
+            
+            return $less;
+        }
+   
 
     public function actionSignIn(){
 
@@ -130,22 +151,6 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
         }
         $this->redirect("dashboard");
 
-
-
-     
-   
-   
-
-
-    // try {
-    // $this->getUser()->login($values->username, $values->password);
-    // } catch(AuthenticationException $e) {
-
-    //     $this->flashMessage($e->getMessage(), "danger");
-    //     $this->redirect("signIn");
-
-    // }
-    // $this->redirect("dashboard");
 
 }
 

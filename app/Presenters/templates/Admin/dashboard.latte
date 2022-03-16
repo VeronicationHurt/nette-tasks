@@ -1,5 +1,6 @@
 {block content}
 
+
 <div class="d-flex justify-content-between align-items-center
                     mb-3">
                     <div>
@@ -119,14 +120,16 @@
                     </thead>
                     <tbody>
 
+
+
+
+{ifset $new} {var $i=$new} {elseifset $less} {var $i =$less}{else}{var $i=6}{/ifset}
+
 {foreach $alltasks as $task}
- <tr>
+ {breakIf $iterator->counter == $i}
 
 
-
-		
-
-	
+<tr>
         <td class="align-middle"><div class="d-flex
             align-items-center">
             
@@ -152,9 +155,34 @@
 
 
 </tr>
+
+
+
+    
+
 {/foreach}
+     
+        
+                
+     
+                
+                
+                
+                
 
 
                     </tbody>
                   </table>
                  </div> 
+                     {*   ----------VIEW ALL TASK----------- *} 
+                
+                <div class="card-footer bg-white text-center">
+                 
+                {ifset $new} <a n:href="showLess! $i">Show less Tasks</a>
+                  	{elseifset $less} <a n:href="showAll! $i">Show All Tasks</a>
+                  {else}<a  n:href="showAll! $i">Show All Tasks</a>
+                {/ifset}
+               
+
+                  
+                </div>   

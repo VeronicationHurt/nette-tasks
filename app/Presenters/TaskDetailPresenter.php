@@ -27,7 +27,7 @@ final class TaskDetailPresenter extends Nette\Application\UI\Presenter
         ->table('tasks')
         ->get($taskId);
 
-
+          $i = 0;
           $idtaskstatus = $this->database->table('tasks')->get($taskId);
 
           $currentstatusid = $this->database->table('tasks')->select('idtaskstatus')->where('id',$taskId);
