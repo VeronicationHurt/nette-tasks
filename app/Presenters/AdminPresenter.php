@@ -52,7 +52,7 @@ final class AdminPresenter extends Nette\Application\UI\Presenter
 
 
         $this->template->users = $this->database
-            ->table('users'); 
+            ->table('login'); 
         
         
 

@@ -126,7 +126,7 @@
 {ifset $new} {var $i=$new} {elseifset $less} {var $i =$less}{else}{var $i=6}{/ifset}
 
 {foreach $alltasks as $task}
- {breakIf $iterator->counter == $i}
+
 
 
 <tr>
@@ -158,7 +158,7 @@
 
 
 
-    
+    {breakIf $iterator->counter == $i}
 
 {/foreach}
      
