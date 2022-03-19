@@ -4,7 +4,7 @@
 
               <div class="card-body">
                 <div class="mb-6">
-                  <h4 class="mb-1"><a class="btn btn-primary" n:href="admin:dashboard">Back to Dashboard</a>
+                  <h4 class="mb-1"><a class="btn btn-dark" n:href="admin:dashboard">Back to Dashboard</a>
                   
                   <a n:href="TaskDetail:editTask $currenttask->id" class="btn btn-dark">Change Task</a>
                   </h4>
@@ -74,6 +74,8 @@
              
 
                     </div>
+
+                    {ifset $comment}
                   <div class="card-body">
                       <!-- card title -->
                       <h4 class="card-title">Comments</h4>
@@ -90,7 +92,7 @@
                         {/foreach}
                     </div>
 
-
+                    {/ifset}
 
                    
                    </div>
